@@ -2,6 +2,7 @@ import 'package:ecommerce_app/cart/bloc/carton_bloc.dart';
 import 'package:ecommerce_app/home/home_page.dart';
 import 'package:ecommerce_app/login/bloc/login_bloc.dart';
 import 'package:ecommerce_app/login/ui/login_screen.dart';
+import 'package:ecommerce_app/order/bloc/order_bloc.dart';
 import 'package:ecommerce_app/search/bloc/search_bloc.dart';
 // import 'package:ecommerce_app/products/ui/products_page.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,9 @@ void main() async {
           ),
           BlocProvider(
             create: (context) => CartonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => OrderBloc(),
           ),
         ],
         child: MaterialApp(

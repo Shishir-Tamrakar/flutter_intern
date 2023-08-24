@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:ecommerce_app/cart/bloc/carton_bloc.dart';
 import 'package:ecommerce_app/cart/model/cart_model.dart';
+import 'package:ecommerce_app/order/bloc/order_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,6 +14,11 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  int generateRandomId() {
+    Random random = Random();
+    return random.nextInt(999);
+  }
+
   @override
   void initState() {
     context.read<CartonBloc>().add(CartonDataFetchEvent());
@@ -150,6 +158,16 @@ class _CartScreenState extends State<CartScreen> {
                           width: 230,
                           child: ElevatedButton(
                               onPressed: () {
+                                int orderId = generateRandomId();
+                                String dateTime = DateTime.now().toString();
+                                int totalAmount =
+                                    calculateTotal(successState.carts);
+
+                                context.read<OrderBloc>().add(OrderStoreEvent(
+                                    orderId,
+                                    dateTime,
+                                    totalAmount,
+                                    successState.carts));
                                 context
                                     .read<CartonBloc>()
                                     .add(CartonDataConfirmEvent());
@@ -176,8 +194,8 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  double calculateTotal(List<CartModel> carts) {
-    double total = 0;
+  int calculateTotal(List<CartModel> carts) {
+    int total = 0;
     for (var cart in carts) {
       total += cart.productTotalAmount;
     }

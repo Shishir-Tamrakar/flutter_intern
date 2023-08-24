@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: Icon(Icons.production_quantity_limits), label: 'Cart'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_3_outlined), label: 'User page'),
+              icon: Icon(Icons.history_edu), label: 'Order History'),
         ],
       ),
     );
