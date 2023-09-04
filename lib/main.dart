@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/cart/bloc/carton_bloc.dart';
 import 'package:ecommerce_app/home/home_page.dart';
+import 'package:ecommerce_app/injector.dart';
 import 'package:ecommerce_app/login/bloc/login_bloc.dart';
 import 'package:ecommerce_app/login/ui/login_screen.dart';
 import 'package:ecommerce_app/order/bloc/order_bloc.dart';
@@ -11,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Future.wait([setupLocator()]);
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var token = prefs.getString('token');
   runApp(

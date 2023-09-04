@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../cart/model/cart_model.dart';
 
 class OrderRepo {
-  static Future<String> storeOrderData(int orderId, String dateTime,
-      int totalAmount, List<CartModel> carts) async {
+  Future<String> storeOrderData(int orderId, String dateTime, int totalAmount,
+      List<CartModel> carts) async {
     List<OrderModel> orderList = [];
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -43,7 +43,7 @@ class OrderRepo {
     }
   }
 
-  static Future<List<OrderModel>> fetchOrderData() async {
+  Future<List<OrderModel>> fetchOrderData() async {
     List<OrderModel> orderList = [];
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? jsonData = prefs.getString('orderData');

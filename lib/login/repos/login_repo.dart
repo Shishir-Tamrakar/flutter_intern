@@ -4,7 +4,7 @@ import 'package:ecommerce_app/login/models/login_model.dart';
 import 'package:http/http.dart' as http;
 
 class LoginRepo {
-  static Future<LoginModel> login(
+  Future<LoginModel> login(
       {required String username, required String password}) async {
     Map data = {'username': username, 'password': password};
 

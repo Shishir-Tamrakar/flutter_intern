@@ -78,11 +78,10 @@ class _OrderScreenState extends State<OrderScreen> {
                                             padding: EdgeInsets.all(10),
                                             color: Colors.white,
                                             child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
                                                   children: [
                                                     ClipRRect(
                                                         borderRadius:
@@ -94,39 +93,35 @@ class _OrderScreenState extends State<OrderScreen> {
                                                           width: 120.0,
                                                           fit: BoxFit.cover,
                                                         )),
-                                                    SizedBox(
-                                                      width: 20.0,
-                                                    ),
-                                                    Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          cart.productTitle,
-                                                          style: TextStyle(
-                                                              fontSize: 14,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 4,
-                                                        ),
-                                                        Text(
-                                                          "Price: ${cart.productPrice}",
-                                                        ),
-                                                        SizedBox(
-                                                          height: 4,
-                                                        ),
-                                                        Text(
-                                                            'Quantity: ${cart.productQuantity}'),
-                                                        SizedBox(
-                                                          height: 4,
-                                                        ),
-                                                        Text(
-                                                            'Total: Rs. ${cart.productTotalAmount}'),
-                                                      ],
+                                                    Expanded(
+                                                      child: Column(
+                                                        children: [
+                                                          Text(
+                                                            cart.productTitle,
+                                                            style: TextStyle(
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 4,
+                                                          ),
+                                                          Text(
+                                                            "Price: ${cart.productPrice}",
+                                                          ),
+                                                          SizedBox(
+                                                            height: 4,
+                                                          ),
+                                                          Text(
+                                                              'Quantity: ${cart.productQuantity}'),
+                                                          SizedBox(
+                                                            height: 4,
+                                                          ),
+                                                          Text(
+                                                              'Total: Rs. ${cart.productTotalAmount}'),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ],
                                                 ),

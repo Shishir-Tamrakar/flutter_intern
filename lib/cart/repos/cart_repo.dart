@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 class CartRepo {
-  static Future<String> storeCartData(
+  Future<String> storeCartData(
       int cartId,
       String productTitle,
       int productPrice,
@@ -49,7 +49,7 @@ class CartRepo {
     }
   }
 
-  static Future<List<CartModel>> fetchCartData() async {
+  Future<List<CartModel>> fetchCartData() async {
     List<CartModel> carts = [];
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? jsonData = prefs.getString('cartData');
@@ -71,7 +71,7 @@ class CartRepo {
     }
   }
 
-  static Future<List<CartModel>> deleteCartData(String productTitle) async {
+  Future<List<CartModel>> deleteCartData(String productTitle) async {
     List<CartModel> carts = [];
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? jsonData = prefs.getString('cartData');
@@ -106,7 +106,7 @@ class CartRepo {
     }
   }
 
-  static Future<List<CartModel>> confirmCartData() async {
+  Future<List<CartModel>> confirmCartData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('cartData');
     return [];
